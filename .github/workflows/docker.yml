@@ -21,4 +21,5 @@ jobs:
           push: true
           tags: |
             maziar/kubia:latest
+            maziar/kubia:0.1
             maziar/kubia:${{ github.sha }}
