@@ -12,8 +12,8 @@ A tiny Node.js web server that replies with the pod's hostname. Used in CLO835 t
 ## Build and push
 
 ```bash
-docker build -t maziar/kubia:1.0 .
-docker push maziar/kubia:1.0
+docker build -t maziar/kubia:0.1 .
+docker push maziar/kubia:0.1
 ```
 
 ## Run on Kubernetes
