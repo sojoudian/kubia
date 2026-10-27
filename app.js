@@ -2,6 +2,7 @@ import { createServer } from "node:http";
 import { hostname } from "node:os";
 
 const PORT = process.env.PORT ?? 8080;            // 3. configurable port
+const VERSION = process.env.VERSION ?? "";       // 6. optional version label (v1, v2)
 
 const server = createServer((req, res) => {
   console.log(`${req.method} ${req.url} from ${req.socket.remoteAddress}`);
@@ -10,7 +11,10 @@ const server = createServer((req, res) => {
     return res.writeHead(200).end("ok\n");
   }
 
-  res.writeHead(200, { "content-type": "text/plain" }).end(`You've hit ${hostname()}\n`);
+  const reply = VERSION
+    ? `This is ${VERSION} running in pod ${hostname()}\n`
+    : `You've hit ${hostname()}\n`;
+  res.writeHead(200, { "content-type": "text/plain" }).end(reply);
 });
 
 server.on("error", (err) => {                     // 5. server error handling

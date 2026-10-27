@@ -1,4 +1,6 @@
 FROM node:24-alpine
+ARG VERSION=""
+ENV VERSION=${VERSION}
 WORKDIR /app
 COPY app.js .
 USER node

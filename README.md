@@ -16,6 +16,16 @@ docker build -t maziar/kubia:0.1 .
 docker push maziar/kubia:0.1
 ```
 
+## Version tags for the rollout lab
+
+The image replies `This is <VERSION> running in pod <name>` when `VERSION` is set.
+Without it, the reply stays `You've hit <name>`.
+
+```bash
+docker buildx build --platform linux/amd64,linux/arm64 --build-arg VERSION=v1 -t maziar/kubia:v1 --push .
+docker buildx build --platform linux/amd64,linux/arm64 --build-arg VERSION=v2 -t maziar/kubia:v2 --push .
+```
+
 ## Run on Kubernetes
 
 ```bash
